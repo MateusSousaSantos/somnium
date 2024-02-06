@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - Bullet
+  - Object
+  - Gun
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - enemy
+  - Water
+  - UI
+  - object
+  - BehindMask
+  - Mask
+  - Black
+  - Player
+  - BackGround2
+  - Paredes
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 4004327611
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: ForeGround
+    uniqueID: 1779982787
+    locked: 0
+  - name: Ui
+    uniqueID: 3085686955
+    locked: 0
+  - name: Paredes
+    uniqueID: 3476928421
+    locked: 0
