@@ -1,2 +1,2 @@
 # somnium
-open source game by Mateus :)
+my simple game for learning and improve on my skills 
