@@ -18,6 +18,8 @@ public class PlayerEstatisticas : TomarDano
 
     public bool cooldownInProgress = false;
 
+
+
     private void Start()
     {
         CurrentVida = VidaMax;

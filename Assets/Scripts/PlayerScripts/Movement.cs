@@ -15,7 +15,7 @@ public class Movment : MonoBehaviour
 
     [SerializeField] SpriteRenderer spriteRenderer;
     private Rigidbody2D Rigidbody2D;
-    private Vector2 _movementInput;
+    private Vector2 movementInput;
     private Vector2 smoothMovementInput;
     private Vector2 smoothMovementImputVelocity;
     public bool Player_ControlCharacter;
@@ -41,15 +41,17 @@ public class Movment : MonoBehaviour
     private void OnMove(InputValue inputValue)
     {
         
-        _movementInput = inputValue.Get<Vector2>();
+        movementInput = inputValue.Get<Vector2>();
         animator.SetBool("isDead", false);
+       
 
     }
 
     private void Update()
     {
+       
 
-        if(!IsDead)//retirar isso casso erro
+        if (!IsDead)//retirar isso casso erro
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -71,7 +73,7 @@ public class Movment : MonoBehaviour
 
                 smoothMovementInput = Vector2.SmoothDamp(
                     smoothMovementInput,
-                    _movementInput,
+                    movementInput,
                     ref smoothMovementImputVelocity,
                     0.1f
                     );
