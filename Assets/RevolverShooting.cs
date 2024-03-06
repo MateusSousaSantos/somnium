@@ -12,6 +12,9 @@ public class RevolverShooting : MonoBehaviour
 
     [SerializeField] Animator animator;
 
+    [SerializeField] PlayerStateManager playerState;
+    [SerializeField] DeadState deadState;
+
     public int CurrentAmunition;
     int MaxAmuntion = 8;
     public bool cooldownInProgress = false;
@@ -29,7 +32,7 @@ public class RevolverShooting : MonoBehaviour
     private void Update()
     {
         
-        if(movment.IsDead != true)
+        if (playerState.currentState != deadState)
         {
         Reload();
         Shooting();

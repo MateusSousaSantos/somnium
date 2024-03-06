@@ -6,13 +6,14 @@ using UnityEngine;
 public class RevolverAim : MonoBehaviour
 {
     [SerializeField] SpriteRenderer Renderer;
-    [SerializeField] Movment movment;
+    [SerializeField] PlayerStateManager playerState;
+    [SerializeField] DeadState deadState;
 
     private void FixedUpdate()
     {
 
 
-        if (movment.Player_ControlCharacter! && movment.IsDead != true)
+        if (playerState.currentState != deadState)
         {
 
                 Vector3 mousePos = Input.mousePosition;

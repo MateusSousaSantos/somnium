@@ -14,6 +14,7 @@ public class CrouchingState : PlayerState
 
     PlayerStats playerStats;
     Animator playerAnimator;
+    PlayerStateManager stateManager;
 
     private void OnMove(InputValue inputValue)
     {
@@ -26,21 +27,31 @@ public class CrouchingState : PlayerState
         playerStats = GetComponent<PlayerStats>();
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
+        stateManager = GetComponent<PlayerStateManager>();
 
-        playerStats.speed = 2.5f;
         playerAnimator.SetBool("isCrouching", true);
         playerAnimator.SetBool("isWalking", true);
     }
 
     public override void UpdateState()
     {
+        
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            if (movementInput == Vector2.zero) stateManager.TransitionToState(stateManager.idleState);
+        }
+        else
+        {
+            stateManager.TransitionToState(stateManager.walkState);
+        }
+
         smoothMovementInput = Vector2.SmoothDamp(
             smoothMovementInput,
             movementInput,
             ref smoothMovementImputVelocity,
             0.1f
         );
-        playerRigidbody2D.velocity = movementInput * playerStats.speed;
+        playerRigidbody2D.velocity = movementInput * (playerStats.speed/2);
     }
 
     public override void ExitState()
