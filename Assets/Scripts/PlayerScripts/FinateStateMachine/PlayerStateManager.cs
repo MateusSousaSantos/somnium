@@ -6,24 +6,21 @@ using UnityEngine.InputSystem;
 public class PlayerStateManager : MonoBehaviour
 {
     [SerializeField] public PlayerState currentState;
+    PlayerStats playerStats;
     SpriteRenderer spriteRenderer;
 
-    [SerializeField] IdleState idleState;
-    [SerializeField] WalkingState walkState;
-    [SerializeField] CrouchingState crouchingState;
+    public IdleState idleState;
+    public WalkingState walkState;
+    public CrouchingState crouchingState;
     [SerializeField] DeadState deadState;
 
-    [SerializeField] private Vector2 movementInput;
+    
     private Rigidbody2D playerRigidbody2D;
 
     Animator playerAnimator;
 
 
 
-    private void OnMove(InputValue inputValue)
-    {
-        movementInput = inputValue.Get<Vector2>();
-    }
 
     void Start()
     {
@@ -33,37 +30,19 @@ public class PlayerStateManager : MonoBehaviour
         deadState = GetComponent<DeadState>();
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+        playerStats = GetComponent<PlayerStats>();
         playerAnimator = GetComponent<Animator>();
 
 
         TransitionToState(idleState);
     }
 
-    void Update()
+    void FixedUpdate()
     {
-       
         currentState.UpdateState();
 
-
-        if (movementInput != Vector2.zero)
-        {
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                TransitionToState(crouchingState);
-            }
-            else
-            {
-                TransitionToState(walkState);
-            }
-            
-        }
-        else
-        {
-            TransitionToState(idleState);
-        }
-
     }
+
 
     public void TransitionToState(PlayerState state)
     {
@@ -73,7 +52,7 @@ public class PlayerStateManager : MonoBehaviour
     }
 }
 
-
+    
 public abstract class PlayerState : MonoBehaviour
 {
     protected PlayerStateManager playerStateManager;
