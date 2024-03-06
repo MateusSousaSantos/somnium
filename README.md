@@ -1,2 +1,3 @@
 # somnium
-my simple game for learning and improve on my skills 
+my topDown adventrue and mistery game for learning and improve on my skills 
+
